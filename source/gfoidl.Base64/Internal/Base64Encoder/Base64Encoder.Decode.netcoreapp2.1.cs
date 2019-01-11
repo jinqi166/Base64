@@ -30,7 +30,7 @@ namespace gfoidl.Base64.Internal
             int destLength   = data.Length;
 
             // max. 2 padding chars
-            if (destLength + 2 < decodedLength)
+            if (destLength < decodedLength - 2)
             {
                 // For overflow see comment below
                 maxSrcLength = destLength / 3 * 4;
