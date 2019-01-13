@@ -116,7 +116,7 @@ namespace gfoidl.Base64.Internal
             ref T destStart     = ref dest;
             ref byte simdSrcEnd = ref Unsafe.Add(ref src, (IntPtr)((uint)sourceLength - 28));   // 28 = 32-4, no +1 as the comparison is >
 
-            // The JIT won't hoist these "constants", so help him
+            // The JIT won't hoist these "constants", so help it
             Vector256<sbyte>  shuffleVec          = s_avx_encodeShuffleVec;
             Vector256<sbyte>  shuffleConstant0    = Vector256.Create(0x0fc0fc00).AsSByte();
             Vector256<sbyte>  shuffleConstant2    = Vector256.Create(0x003f03f0).AsSByte();
@@ -186,7 +186,7 @@ namespace gfoidl.Base64.Internal
             src  = ref Unsafe.Add(ref src , (IntPtr)sourceIndex);
             dest = ref Unsafe.Add(ref dest, (IntPtr)destIndex);
 
-            // The JIT won't hoist these "constants", so help him
+            // The JIT won't hoist these "constants", so help it
             Vector128<sbyte>  shuffleVec          = s_sse_encodeShuffleVec;
             Vector128<sbyte>  shuffleConstant0    = Vector128.Create(0x0fc0fc00).AsSByte();
             Vector128<sbyte>  shuffleConstant2    = Vector128.Create(0x003f03f0).AsSByte();
